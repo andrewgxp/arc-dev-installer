@@ -4,4 +4,4 @@ This simple bash script will install a standalone Kubenetes installation using M
 
 At this time, the script is only compatible with Ubuntu based systems.
 
-Usage: `./arc-dev-installer.sh -token $YOUR-PERSONAL-ACCESS-TOKEN -owner $YOUR-REPO-OWNER-OR-ORG-NAME -repo $YOUR-REPO`
+Usage: `./arc-dev-installer.sh -token $YOUR-PERSONAL-ACCESS-TOKEN -owner $YOUR-REPO-OWNER-OR-ORG-NAME -repo $YOUR-REPO min $YOUR-MINIMUM-RUNNERS max $YOUR-MAXIMUM-RUNNERS`
