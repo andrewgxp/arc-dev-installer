@@ -6,8 +6,8 @@ set -e
 GHE_TOKEN=""
 REPO_NAME=""
 REPO_OWNER=""
-MIN_RUNNERS""
-MAX_RUNNERS""
+MIN_RUNNERS=""
+MAX_RUNNERS=""
 DIRECTORY=$(pwd)
 
 usage() {
