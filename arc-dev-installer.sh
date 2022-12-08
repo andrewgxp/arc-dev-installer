@@ -6,6 +6,8 @@ set -e
 GHE_TOKEN=""
 REPO_NAME=""
 REPO_OWNER=""
+MIN_RUNNERS""
+MAX_RUNNERS""
 DIRECTORY=$(pwd)
 
 usage() {
@@ -41,6 +43,14 @@ while [ $# -gt 0 ]; do
             REPO_OWNER=$2
             shift 2
             ;;
+        -min|--min-runners)
+            MIN_RUNNERS=$2
+            shift 2
+            ;;
+        -max|--min-runners)
+            MAX_RUNNERS=$2
+            shift 2
+            ;;
         *)
             >&2 echo "Unrecognized argument: $1"
             usage
@@ -49,17 +59,27 @@ while [ $# -gt 0 ]; do
 done
 
 if [[ -z $GHE_TOKEN ]]; then
- echo "The GHE_TOKEN value is empty and needs to with --token"
+ echo "The GHE_TOKEN value is empty and needs to be set with --token"
  usage
 fi
 
 if [[ -z $REPO_NAME ]]; then
- echo "The REPO_NAME value is empty and needs to with --repo-name"
+ echo "The REPO_NAME value is empty and needs to be set with --repo-name"
  usage
 fi
 
 if [[ -z $REPO_OWNER ]]; then
- echo "The REPO_OWNER value is empty and needs to with --repo-owner"
+ echo "The REPO_OWNER value is empty and needs to be set with --repo-owner"
+ usage
+fi
+
+if [[ -z $MIN_RUNNERS ]]; then
+ echo "The MIN_RUNNERS value is empty and needs to be set with --min-runners"
+ usage
+fi
+
+if [[ -z $MAX_RUNNERS ]]; then
+ echo "The MAX_RUNNERS value is empty and needs to be set with --max-runners"
  usage
 fi
 
@@ -121,8 +141,8 @@ spec:
     # # In case the scale target is RunnerSet:
     # kind: RunnerSet
     name: example-runner-deployment
-  minReplicas: 1
-  maxReplicas: 5
+  minReplicas: $MIN_RUNNERS
+  maxReplicas: $MAX_RUNNERS
   metrics:
   - type: TotalNumberOfQueuedAndInProgressWorkflowRuns
     repositoryNames:
