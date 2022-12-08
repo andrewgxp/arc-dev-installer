@@ -1,0 +1,16 @@
+name: ARC Test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout the repository
+      - uses: actions/checkout@v3
+
+      
+      - name: run the arc-dev-installer bash script
+        run: /bin/bash -x arc-dev-installer.sh -token ${{ secrets.GITHUB_TOKEN }} -owner andrewgxp -repo dispatch
