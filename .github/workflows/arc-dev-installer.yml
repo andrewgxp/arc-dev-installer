@@ -1,4 +1,4 @@
-name: ARC Test
+name: ARC Developement Installer
 
 on:
   workflow_dispatch:
